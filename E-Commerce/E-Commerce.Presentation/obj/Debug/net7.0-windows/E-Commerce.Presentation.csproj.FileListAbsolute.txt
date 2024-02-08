@@ -54,3 +54,9 @@ F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\bin\Debu
 F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E-Commerce.Presentation.csproj.AssemblyReference.cache
 F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E-Commerce.Presentation.csproj.CopyComplete
+F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E_Commerce.Presentation.Form1.resources
+F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E-Commerce.Presentation.csproj.GenerateResource.cache
+F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E_Commerce.Presentation.Properties.Resources.resources
+F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\bin\Debug\net7.0-windows\MaterialSkin.dll
+F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\bin\Debug\net7.0-windows\E-Commerce.Domain.dll
+F:\ITI\FullStack\9-Visual C#\Project\E-Commerce\E-Commerce.Presentation\bin\Debug\net7.0-windows\E-Commerce.Domain.pdb

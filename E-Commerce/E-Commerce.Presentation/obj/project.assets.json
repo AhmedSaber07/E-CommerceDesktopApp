@@ -59,6 +59,15 @@
           }
         }
       },
+      "MaterialSkin.Updated/0.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/MaterialSkin.dll": {}
+        },
+        "runtime": {
+          "lib/MaterialSkin.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -1053,6 +1062,20 @@
             "rid": "win"
           }
         }
+      },
+      "E-Commerce.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.15",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.15"
+        },
+        "compile": {
+          "bin/placeholder/E-Commerce.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/E-Commerce.Domain.dll": {}
+        }
       }
     }
   },
@@ -1111,6 +1134,18 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "MaterialSkin.Updated/0.2.2": {
+      "sha512": "X4FGDVbHUb0h/gBTje6nPk3tYokwPqDA4+2PsMm28z736j/B2CNsLNeDOIzqqvdmCm6hfD5amFRQPf4HU9BmGQ==",
+      "type": "package",
+      "path": "materialskin.updated/0.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MaterialSkin.dll",
+        "materialskin.updated.0.2.2.nupkg.sha512",
+        "materialskin.updated.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -2875,10 +2910,17 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "E-Commerce.Domain/1.0.0": {
+      "type": "project",
+      "path": "../E-Commerce.Domain/E-Commerce.Domain.csproj",
+      "msbuildProject": "../E-Commerce.Domain/E-Commerce.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
+      "E-Commerce.Domain >= 1.0.0",
+      "MaterialSkin.Updated >= 0.2.2",
       "Microsoft.EntityFrameworkCore >= 7.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.15",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.15"
@@ -2910,7 +2952,11 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Domain\\E-Commerce.Domain.csproj": {
+              "projectPath": "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Domain\\E-Commerce.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -2923,6 +2969,10 @@
       "net7.0-windows7.0": {
         "targetAlias": "net7.0-windows",
         "dependencies": {
+          "MaterialSkin.Updated": {
+            "target": "Package",
+            "version": "[0.2.2, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[7.0.15, )"
@@ -2960,5 +3010,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MaterialSkin.Updated 0.2.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "MaterialSkin.Updated",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    }
+  ]
 }
