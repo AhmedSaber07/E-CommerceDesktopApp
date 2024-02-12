@@ -44,12 +44,12 @@ namespace E_Commerce.Infrastructure.Repositories
         {
             return _context.Set<T>().Find(id);
         }
-
         public T Update(T entity)
         {
             _context.Update<T>(entity);
             Complete();
             return entity;
         }
+
     }
 }
