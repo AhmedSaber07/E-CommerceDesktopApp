@@ -1,6 +1,6 @@
 ﻿namespace E_Commerce.Presentation
 {
-    partial class Form1
+    partial class DashboardForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
             panel1 = new Panel();
             DashBoard = new Button();
             AddAdminBtn = new Button();
@@ -44,16 +44,28 @@
             ProductsPage = new TabPage();
             OrdersPage = new TabPage();
             dgrViewOrders = new DataGridView();
-            Name = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
             FinalPrice = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             AddAdminPage = new TabPage();
+            btnAddAdmin = new Button();
+            ErrorConfirmPassword = new Label();
+            ConfirmPasswordTxt = new TextBox();
+            ErrorPassword = new Label();
+            PasswordTxt = new TextBox();
+            ErrorPhoneNumber = new Label();
+            PhoneNumberTxt = new TextBox();
+            ErrorEmail = new Label();
+            EmailTxt = new TextBox();
+            ErrorFullName = new Label();
+            FullNameTxt = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl.SuspendLayout();
             OrdersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgrViewOrders).BeginInit();
+            AddAdminPage.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -103,6 +115,7 @@
             AddAdminBtn.TabIndex = 6;
             AddAdminBtn.Text = "Add Admin";
             AddAdminBtn.UseVisualStyleBackColor = false;
+            AddAdminBtn.Click += AddAdminBtn_Click;
             // 
             // OrderBtn
             // 
@@ -236,7 +249,7 @@
             // 
             dgrViewOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgrViewOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgrViewOrders.Columns.AddRange(new DataGridViewColumn[] { Name, FinalPrice, Date, Email });
+            dgrViewOrders.Columns.AddRange(new DataGridViewColumn[] { FullName, FinalPrice, Date, Email });
             dgrViewOrders.Dock = DockStyle.Fill;
             dgrViewOrders.Location = new Point(3, 3);
             dgrViewOrders.Name = "dgrViewOrders";
@@ -244,12 +257,12 @@
             dgrViewOrders.Size = new Size(701, 475);
             dgrViewOrders.TabIndex = 0;
             // 
-            // Name
+            // FullName
             // 
-            Name.DataPropertyName = "FullName";
-            Name.HeaderText = "Full Name";
-            Name.MinimumWidth = 10;
-            Name.Name = "Name";
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Full Name";
+            FullName.MinimumWidth = 10;
+            FullName.Name = "FullName";
             // 
             // FinalPrice
             // 
@@ -271,6 +284,17 @@
             // 
             // AddAdminPage
             // 
+            AddAdminPage.Controls.Add(btnAddAdmin);
+            AddAdminPage.Controls.Add(ErrorConfirmPassword);
+            AddAdminPage.Controls.Add(ConfirmPasswordTxt);
+            AddAdminPage.Controls.Add(ErrorPassword);
+            AddAdminPage.Controls.Add(PasswordTxt);
+            AddAdminPage.Controls.Add(ErrorPhoneNumber);
+            AddAdminPage.Controls.Add(PhoneNumberTxt);
+            AddAdminPage.Controls.Add(ErrorEmail);
+            AddAdminPage.Controls.Add(EmailTxt);
+            AddAdminPage.Controls.Add(ErrorFullName);
+            AddAdminPage.Controls.Add(FullNameTxt);
             AddAdminPage.Location = new Point(4, 4);
             AddAdminPage.Name = "AddAdminPage";
             AddAdminPage.Padding = new Padding(3);
@@ -279,21 +303,157 @@
             AddAdminPage.Text = "AddAdmin";
             AddAdminPage.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // btnAddAdmin
+            // 
+            btnAddAdmin.BackColor = Color.DarkGreen;
+            btnAddAdmin.Cursor = Cursors.Hand;
+            btnAddAdmin.FlatAppearance.BorderSize = 0;
+            btnAddAdmin.FlatAppearance.MouseOverBackColor = Color.SeaGreen;
+            btnAddAdmin.FlatStyle = FlatStyle.Flat;
+            btnAddAdmin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAddAdmin.ForeColor = Color.White;
+            btnAddAdmin.Location = new Point(217, 417);
+            btnAddAdmin.Name = "btnAddAdmin";
+            btnAddAdmin.Size = new Size(280, 41);
+            btnAddAdmin.TabIndex = 10;
+            btnAddAdmin.Text = "Create";
+            btnAddAdmin.UseVisualStyleBackColor = false;
+            btnAddAdmin.Click += btnAddAdmin_Click;
+            // 
+            // ErrorConfirmPassword
+            // 
+            ErrorConfirmPassword.AutoSize = true;
+            ErrorConfirmPassword.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ErrorConfirmPassword.ForeColor = Color.Red;
+            ErrorConfirmPassword.Location = new Point(214, 373);
+            ErrorConfirmPassword.Name = "ErrorConfirmPassword";
+            ErrorConfirmPassword.Size = new Size(43, 17);
+            ErrorConfirmPassword.TabIndex = 9;
+            ErrorConfirmPassword.Text = "label3";
+            ErrorConfirmPassword.Visible = false;
+            // 
+            // ConfirmPasswordTxt
+            // 
+            ConfirmPasswordTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            ConfirmPasswordTxt.Location = new Point(214, 328);
+            ConfirmPasswordTxt.Multiline = true;
+            ConfirmPasswordTxt.Name = "ConfirmPasswordTxt";
+            ConfirmPasswordTxt.PasswordChar = '*';
+            ConfirmPasswordTxt.PlaceholderText = "Enter Confirm Password";
+            ConfirmPasswordTxt.Size = new Size(283, 32);
+            ConfirmPasswordTxt.TabIndex = 8;
+            ConfirmPasswordTxt.TextChanged += ConfirmPasswordTxt_TextChanged;
+            // 
+            // ErrorPassword
+            // 
+            ErrorPassword.AutoSize = true;
+            ErrorPassword.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ErrorPassword.ForeColor = Color.Red;
+            ErrorPassword.Location = new Point(214, 302);
+            ErrorPassword.Name = "ErrorPassword";
+            ErrorPassword.Size = new Size(43, 17);
+            ErrorPassword.TabIndex = 7;
+            ErrorPassword.Text = "label3";
+            ErrorPassword.Visible = false;
+            // 
+            // PasswordTxt
+            // 
+            PasswordTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            PasswordTxt.Location = new Point(214, 257);
+            PasswordTxt.Multiline = true;
+            PasswordTxt.Name = "PasswordTxt";
+            PasswordTxt.PasswordChar = '*';
+            PasswordTxt.PlaceholderText = "Enter Password";
+            PasswordTxt.Size = new Size(283, 32);
+            PasswordTxt.TabIndex = 6;
+            PasswordTxt.TextChanged += PasswordTxt_TextChanged;
+            // 
+            // ErrorPhoneNumber
+            // 
+            ErrorPhoneNumber.AutoSize = true;
+            ErrorPhoneNumber.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ErrorPhoneNumber.ForeColor = Color.Red;
+            ErrorPhoneNumber.Location = new Point(214, 228);
+            ErrorPhoneNumber.Name = "ErrorPhoneNumber";
+            ErrorPhoneNumber.Size = new Size(43, 17);
+            ErrorPhoneNumber.TabIndex = 5;
+            ErrorPhoneNumber.Text = "label2";
+            ErrorPhoneNumber.Visible = false;
+            // 
+            // PhoneNumberTxt
+            // 
+            PhoneNumberTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            PhoneNumberTxt.Location = new Point(214, 183);
+            PhoneNumberTxt.Multiline = true;
+            PhoneNumberTxt.Name = "PhoneNumberTxt";
+            PhoneNumberTxt.PlaceholderText = "Enter Phone Number";
+            PhoneNumberTxt.Size = new Size(283, 32);
+            PhoneNumberTxt.TabIndex = 4;
+            PhoneNumberTxt.TextChanged += PhoneNumberTxt_TextChanged;
+            // 
+            // ErrorEmail
+            // 
+            ErrorEmail.AutoSize = true;
+            ErrorEmail.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ErrorEmail.ForeColor = Color.Red;
+            ErrorEmail.Location = new Point(214, 149);
+            ErrorEmail.Name = "ErrorEmail";
+            ErrorEmail.Size = new Size(43, 17);
+            ErrorEmail.TabIndex = 3;
+            ErrorEmail.Text = "label2";
+            ErrorEmail.Visible = false;
+            // 
+            // EmailTxt
+            // 
+            EmailTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            EmailTxt.Location = new Point(214, 104);
+            EmailTxt.Multiline = true;
+            EmailTxt.Name = "EmailTxt";
+            EmailTxt.PlaceholderText = "Enter Email";
+            EmailTxt.Size = new Size(283, 32);
+            EmailTxt.TabIndex = 2;
+            EmailTxt.TextChanged += EmailTxt_TextChanged;
+            // 
+            // ErrorFullName
+            // 
+            ErrorFullName.AutoSize = true;
+            ErrorFullName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ErrorFullName.ForeColor = Color.Red;
+            ErrorFullName.Location = new Point(214, 68);
+            ErrorFullName.Name = "ErrorFullName";
+            ErrorFullName.Size = new Size(43, 17);
+            ErrorFullName.TabIndex = 1;
+            ErrorFullName.Text = "label2";
+            ErrorFullName.Visible = false;
+            // 
+            // FullNameTxt
+            // 
+            FullNameTxt.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            FullNameTxt.Location = new Point(214, 23);
+            FullNameTxt.Multiline = true;
+            FullNameTxt.Name = "FullNameTxt";
+            FullNameTxt.PlaceholderText = "Enter Full Name";
+            FullNameTxt.Size = new Size(283, 32);
+            FullNameTxt.TabIndex = 0;
+            FullNameTxt.TextChanged += FullNameTxt_TextChanged;
+            // 
+            // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(956, 509);
             Controls.Add(tabControl);
             Controls.Add(panel1);
-           // Name = "Form1";
-            Text = "E-Commerce";
+            Name = "DashboardForm";
+            Text = "Dashboard";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl.ResumeLayout(false);
             OrdersPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgrViewOrders).EndInit();
+            AddAdminPage.ResumeLayout(false);
+            AddAdminPage.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -315,7 +475,18 @@
         private TabPage OrdersPage;
         private TabPage AddAdminPage;
         private DataGridView dgrViewOrders;
-        private DataGridViewTextBoxColumn Name;
+        private Label ErrorFullName;
+        private TextBox FullNameTxt;
+        private Label ErrorConfirmPassword;
+        private TextBox ConfirmPasswordTxt;
+        private Label ErrorPassword;
+        private TextBox PasswordTxt;
+        private Label ErrorPhoneNumber;
+        private TextBox PhoneNumberTxt;
+        private Label ErrorEmail;
+        private TextBox EmailTxt;
+        private Button btnAddAdmin;
+        private DataGridViewTextBoxColumn FullName;
         private DataGridViewTextBoxColumn FinalPrice;
         private DataGridViewTextBoxColumn Date;
         private DataGridViewTextBoxColumn Email;
