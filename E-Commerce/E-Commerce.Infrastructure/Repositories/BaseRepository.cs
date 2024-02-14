@@ -1,5 +1,6 @@
-﻿using E_Commerce.Application.Contracts;
+﻿using E_Commerce.Applications.Contracts;
 using E_Commerce.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,18 +25,25 @@ namespace E_Commerce.Infrastructure.Repositories
         public T Create(T entity)
         {
             _context.Set<T>().Add(entity);
-            Complete();
-            return entity;
+			Complete();
+			return entity;
         }
+		public bool Delete(T entity, int id)
+		{
+			T existingEntity = GetById(id);
+			try
+			{
+				_context.Set<T>().Remove(existingEntity);
+				Complete();
+				return true;
+			}
+			catch 
+			{
+				return false;
+			}
+		}
 
-        public bool Delete(T entity)
-        {
-            _context.Set<T>().Remove(entity);
-            Complete();
-            return true;
-        }
-
-        public IQueryable<T> GetAll()
+		public IQueryable<T> GetAll()
         {
             return _context.Set<T>();
         }
@@ -44,12 +52,20 @@ namespace E_Commerce.Infrastructure.Repositories
         {
             return _context.Set<T>().Find(id);
         }
-        public T Update(T entity)
-        {
-            _context.Update<T>(entity);
-            Complete();
-            return entity;
-        }
 
+        public bool Update(T entity, int id)
+        {
+			var existingEntity = _context.Set<T>().Find(id);
+			try
+			{
+				_context.Entry(existingEntity).CurrentValues.SetValues(entity);
+				Complete();
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
     }
 }

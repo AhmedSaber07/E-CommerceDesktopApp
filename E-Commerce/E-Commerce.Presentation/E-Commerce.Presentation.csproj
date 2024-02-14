@@ -19,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\E-Commerce.Application\E-Commerce.Applications.csproj" />
     <ProjectReference Include="..\E-Commerce.Domain\E-Commerce.Domain.csproj" />
+    <ProjectReference Include="..\E-Commerce.Infrastructure\E-Commerce.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,20 +1,21 @@
-﻿using E_Commerce.Application.Contracts;
+﻿using E_Commerce.Applications.Contracts;
 using E_Commerce.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Application.Services
+namespace E_Commerce.Applications.Services
 {
     public class ProductService 
     {
         IProductRepository _productRepository;
-        public ProductService(IProductRepository productRepository)
+		public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-        }
+		}
         public Product CreateProduct(Product product)
         {
             if (product is not null)
@@ -25,21 +26,19 @@ namespace E_Commerce.Application.Services
             }
             return null;
         }
-        public Product UpdateProduct(Product product)
+        public bool UpdateProduct(Product product,int id)
         {
             if (product is not null)
             {
-                var prod = _productRepository.Update(product);
-                _productRepository.Complete();
-                return prod;
+                return  _productRepository.Update(product,id);
             }
-            return null;
+            return false;
         }
-        public bool DeleteProduct(Product product)
+        public bool DeleteProduct(Product product, int id)
         {
             if (product is not null)
             {
-                bool prod = _productRepository.Delete(product);
+                bool prod =  _productRepository.Delete(product,id);
                 _productRepository.Complete();
                 return prod;
             }
@@ -47,7 +46,7 @@ namespace E_Commerce.Application.Services
         }
         public IQueryable<Product> GetProducts()
         {
-            return _productRepository.GetAll();
+            return _productRepository.GetAll().Include(e=>e.Category);
         }
         public Product GetProduct(int id)
         {

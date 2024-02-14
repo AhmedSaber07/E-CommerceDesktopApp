@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Application.Contracts
+namespace E_Commerce.Applications.Contracts
 {
     public interface ICategoryRepository : IBaseRepository<Category>
     {
-        IQueryable<Category> SearchByName(string categoryName);
+        void AddProductToCategory(Category category,Product product);
+		IQueryable<Product> GetProductsByCategory(int categoryId);
+		Category GetByName(string categoryName);
         IQueryable<Category> SortByNameAsc();
         IQueryable<Category> SortByNameDesc();
 

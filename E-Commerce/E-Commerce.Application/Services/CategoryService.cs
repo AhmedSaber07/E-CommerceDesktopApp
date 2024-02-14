@@ -1,4 +1,4 @@
-﻿using E_Commerce.Application.Contracts;
+﻿using E_Commerce.Applications.Contracts;
 using E_Commerce.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -6,46 +6,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Application.Services
+namespace E_Commerce.Applications.Services
 {
     public class CategoryService
     {
         ICategoryRepository _categoryRepository;
-        public CategoryService(ICategoryRepository categoryRepository)
+		public CategoryService(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
         public Category CreateCategory(Category category)
         {
-            if (category is not null)
+            if (category is not null && _categoryRepository.GetByName(category.Name) is null)
             {
-                var cate = _categoryRepository.Create(category);
-                _categoryRepository.Complete();
-                return cate;
+               return _categoryRepository.Create(category);
+               
             }
             return null;
         }
-        public Category UpdateCategory(Category category)
+        public bool DeleteCategory(Category category,int id)
         {
-            if (category is not null)
+            if (category is not null&& GetProductsByCategory(id).ToList().Count==0)
             {
-                var cate = _categoryRepository.Update(category);
-                _categoryRepository.Complete();
-                return cate;
-            }
-            return null;
-        }
-        public bool DeleteCategory(Category category)
-        {
-            if (category is not null)
-            {
-                bool cate = _categoryRepository.Delete(category);
-                _categoryRepository.Complete();
-                return cate;
+               return  _categoryRepository.Delete(category, id);
             }
             return false;
         }
-        public IQueryable<Category> GetCategories()
+
+		private IQueryable<Product> GetProductsByCategory(int id)
+		{
+            return _categoryRepository.GetProductsByCategory(id);
+		}
+
+		public IQueryable<Category> GetCategories()
         {
             return _categoryRepository.GetAll();
         }
@@ -57,11 +50,11 @@ namespace E_Commerce.Application.Services
             }
             return null;
         }
-        public IQueryable<Category> SearchByName(string categoryName)
+        public Category GetByName(string categoryName)
         {
             if (categoryName is not null)
             {
-                return _categoryRepository.SearchByName(categoryName);
+                return _categoryRepository.GetByName(categoryName);
             }
             return null;
         }
@@ -73,6 +66,19 @@ namespace E_Commerce.Application.Services
         {
             return _categoryRepository.SortByNameDesc();
         }
+        public void AssignProductToCatgeory(Category category,Product product)
+        {
+            _categoryRepository.AddProductToCategory(category, product);
+        }
 
-    }
+		public bool UpdateCategory(Category category, int categoryId)
+		{
+            if (category is not null && _categoryRepository.GetByName(category.Name) is null)
+			{
+
+				return _categoryRepository.Update(category,categoryId);
+			}
+			return false;
+		}
+	}
 }

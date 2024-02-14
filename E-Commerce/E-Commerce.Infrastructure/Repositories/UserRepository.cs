@@ -1,4 +1,4 @@
-﻿using E_Commerce.Application.Contracts;
+﻿using E_Commerce.Applications.Contracts;
 using E_Commerce.Domain.Models;
 using E_Commerce.Infrastructure.Context;
 using System;
@@ -22,9 +22,9 @@ namespace E_Commerce.Infrastructure.Repositories
            return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
         }
 
-        public IQueryable<User> SearchByName(string userName)
+        public User GetByEmail(string email)
         {
-            return _context.Users.Where(s => s.Name == userName);
+            return _context.Users.FirstOrDefault(s => s.Email == email);
         }
     }
 }

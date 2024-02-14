@@ -1,6 +1,7 @@
-﻿using E_Commerce.Application.Contracts;
+﻿using E_Commerce.Applications.Contracts;
 using E_Commerce.Domain.Models;
 using E_Commerce.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,23 @@ namespace E_Commerce.Infrastructure.Repositories
             _context = context;
         }
 
-        public IQueryable<Category> SearchByName(string categoryName)
+		public void AddProductToCategory(Category category, Product product)
+		{
+            _context.Categories.Include(e => e.Products).FirstOrDefault(e => e.ID == category.ID).Products.Add(product);
+            _context.SaveChanges();
+		}
+
+		public Category GetByName(string categoryName)
         {
-            return _context.Categories.Where(C => C.Name == categoryName);
+            return _context.Categories.FirstOrDefault(C => C.Name == categoryName);
         }
-        public IQueryable<Category> SortByNameAsc()
+
+		public IQueryable<Product> GetProductsByCategory(int categoryId)
+		{
+			return _context.Products.Include(e => e.Category).Where(e => e.Category.ID == categoryId);
+		}
+
+		public IQueryable<Category> SortByNameAsc()
         {
             return _context.Categories.OrderBy(C => C.Name);
         }

@@ -1,6 +1,7 @@
-﻿using E_Commerce.Application.Contracts;
+﻿using E_Commerce.Applications.Contracts;
 using E_Commerce.Domain.Models;
 using E_Commerce.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace E_Commerce.Infrastructure.Repositories
         {
             _context = context;
         }
-        public IQueryable<Product> SearchByName(string productName)
+
+		public IQueryable<Product> SearchByName(string productName)
         {
             return _context.Products.Where(s => s.Name == productName);
         }

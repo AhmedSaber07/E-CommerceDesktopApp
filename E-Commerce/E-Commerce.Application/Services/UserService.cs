@@ -1,4 +1,4 @@
-﻿using E_Commerce.Application.Contracts;
+﻿using E_Commerce.Applications.Contracts;
 using E_Commerce.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Application.Services
+namespace E_Commerce.Applications.Services
 {
     public class UserService
     {
@@ -17,29 +17,26 @@ namespace E_Commerce.Application.Services
         }
         public User UserRegister(User user)
         {
-            if (user is not null)
+            if (user is not null && _userRepository.GetByEmail(user.Email) is null)
             {
                 var _user = _userRepository.Create(user);
-                _userRepository.Complete();
                 return _user;
             }
             return null;
         }
-        public User UpdateUser(User user)
+        public bool UpdateUser(User user,int id)
         {
             if (user is not null)
             {
-                var _user = _userRepository.Update(user);
-                _userRepository.Complete();
-                return _user;
+                return  _userRepository.Update(user,id);
             }
-            return null;
+            return false;
         }
-        public bool DeleteUser(User user)
+        public bool DeleteUser(User user, int id)
         {
             if (user is not null)
             {
-                bool _user = _userRepository.Delete(user);
+                bool _user =  _userRepository.Delete(user, id);
                 _userRepository.Complete();
                 return _user;
             }

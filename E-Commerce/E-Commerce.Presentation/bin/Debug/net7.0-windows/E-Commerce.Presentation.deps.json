@@ -8,13 +8,26 @@
     ".NETCoreApp,Version=v7.0": {
       "E-Commerce.Presentation/1.0.0": {
         "dependencies": {
+          "E-Commerce.Applications": "1.0.0",
           "E-Commerce.Domain": "1.0.0",
+          "E-Commerce.Infrastructure": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.15",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.15",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.15"
         },
         "runtime": {
           "E-Commerce.Presentation.dll": {}
+        }
+      },
+      "AutoMapper/13.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Options": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.0"
+          }
         }
       },
       "Azure.Core/1.25.0": {
@@ -528,6 +541,17 @@
           "System.Drawing.Common": "6.0.0"
         }
       },
+      "E-Commerce.Applications/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "E-Commerce.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.15",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.15"
+        },
+        "runtime": {
+          "E-Commerce.Applications.dll": {}
+        }
+      },
       "E-Commerce.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.15",
@@ -535,6 +559,17 @@
         },
         "runtime": {
           "E-Commerce.Domain.dll": {}
+        }
+      },
+      "E-Commerce.Infrastructure/1.0.0": {
+        "dependencies": {
+          "E-Commerce.Applications": "1.0.0",
+          "E-Commerce.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.15",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.15"
+        },
+        "runtime": {
+          "E-Commerce.Infrastructure.dll": {}
         }
       }
     }
@@ -544,6 +579,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AutoMapper/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "path": "automapper/13.0.1",
+      "hashPath": "automapper.13.0.1.nupkg.sha512"
     },
     "Azure.Core/1.25.0": {
       "type": "package",
@@ -965,7 +1007,17 @@
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
+    "E-Commerce.Applications/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "E-Commerce.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "E-Commerce.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
