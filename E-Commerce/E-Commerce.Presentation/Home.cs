@@ -24,12 +24,15 @@ namespace E_Commerce.Presentation
 		IMapper mapper = Mapping.MappingAddCustomer();
 		UserService userService = new UserService(new UserRepository(new ApplicationDbContext()));
 		CategoryService categoryService = new CategoryService(new CategoryRepository(new ApplicationDbContext()));
-		public Home()
+        ProductService productService = new ProductService(new ProductRepository(new ApplicationDbContext()));
+        public Home()
 		{
 			InitializeComponent();
 			SelectHomePage();
 			BindCategories();
-		}
+            BindProducts();
+
+        }
 		private void BindCategories()
 		{
 			var categories = categoryService.GetCategories().ToList();
@@ -38,7 +41,23 @@ namespace E_Commerce.Presentation
 			comboxCategory.DisplayMember = "Name";
 			comboxCategory.ValueMember = "ID";
 		}
-		private void isRequired(Label label)
+        private void BindProducts()
+        {
+            flowLayoutProductPanel.Controls.Clear();
+            var Products = productService.GetProducts().ToList();
+            foreach (var p in Products)
+            {
+                ProductDisplayControl product = new ProductDisplayControl();
+                product.Id = p.ID;
+                product.pname = p.Name;
+                product.Price = p.Price;
+                product.Quantity = p.Quantity;
+                product.CategoryName = p.Category.Name;
+                product.image = Image.FromFile(p.Image);
+                flowLayoutProductPanel.Controls.Add(product);
+            }
+        }
+        private void isRequired(Label label)
 		{
 			label.Visible = true;
 			label.Text = "Field is Required";
