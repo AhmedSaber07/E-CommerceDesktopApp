@@ -50,7 +50,6 @@ namespace E_Commerce.Presentation
         private void label1_Click(object sender, EventArgs e)
         {
             RemoveProductIdToCart(_id);
-            --ProductDisplayControl.counter;
         }
         private void IncreaseCartbtn_Click(object sender, EventArgs e)
         {

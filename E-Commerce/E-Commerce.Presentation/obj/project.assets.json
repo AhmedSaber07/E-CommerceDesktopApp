@@ -2980,24 +2980,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mohamed\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ahmed\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Presentation\\E-Commerce.Presentation.csproj",
+      "projectUniqueName": "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Presentation\\E-Commerce.Presentation.csproj",
       "projectName": "E-Commerce.Presentation",
-      "projectPath": "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Presentation\\E-Commerce.Presentation.csproj",
-      "packagesPath": "C:\\Users\\Mohamed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Presentation\\obj\\",
+      "projectPath": "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Presentation\\E-Commerce.Presentation.csproj",
+      "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
+      "outputPath": "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Presentation\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Mohamed\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3011,14 +3006,14 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Application\\E-Commerce.Applications.csproj": {
-              "projectPath": "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Application\\E-Commerce.Applications.csproj"
+            "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Application\\E-Commerce.Applications.csproj": {
+              "projectPath": "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Application\\E-Commerce.Applications.csproj"
             },
-            "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Domain\\E-Commerce.Domain.csproj": {
-              "projectPath": "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Domain\\E-Commerce.Domain.csproj"
+            "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Domain\\E-Commerce.Domain.csproj": {
+              "projectPath": "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Domain\\E-Commerce.Domain.csproj"
             },
-            "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Infrastructure\\E-Commerce.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Mohamed\\Desktop\\Visual Project\\E-CommerceDesktopApp\\E-Commerce\\E-Commerce.Infrastructure\\E-Commerce.Infrastructure.csproj"
+            "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Infrastructure\\E-Commerce.Infrastructure.csproj": {
+              "projectPath": "F:\\ITI\\FullStack\\9-Visual C#\\Project\\E-Commerce\\E-Commerce.Infrastructure\\E-Commerce.Infrastructure.csproj"
             }
           }
         }
@@ -3067,7 +3062,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
