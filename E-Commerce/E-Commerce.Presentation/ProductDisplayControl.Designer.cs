@@ -38,9 +38,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(7, 6);
+            pictureBox1.Location = new Point(6, 4);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(336, 308);
+            pictureBox1.Size = new Size(294, 231);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -48,9 +49,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(0, 320);
+            label1.Location = new Point(0, 240);
             label1.Name = "label1";
-            label1.Size = new Size(104, 41);
+            label1.Size = new Size(83, 32);
             label1.TabIndex = 1;
             label1.Text = "label1";
             // 
@@ -58,9 +59,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(214, 320);
+            label2.Location = new Point(187, 240);
             label2.Name = "label2";
-            label2.Size = new Size(96, 38);
+            label2.Size = new Size(76, 30);
             label2.TabIndex = 2;
             label2.Text = "label2";
             // 
@@ -68,9 +69,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(7, 382);
+            label3.Location = new Point(6, 286);
             label3.Name = "label3";
-            label3.Size = new Size(70, 28);
+            label3.Size = new Size(57, 21);
             label3.TabIndex = 3;
             label3.Text = "label3";
             // 
@@ -80,16 +81,18 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Candara", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(171, 370);
+            button1.Location = new Point(150, 278);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(161, 54);
+            button1.Size = new Size(141, 40);
             button1.TabIndex = 4;
             button1.Text = "Add to Card";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // ProductDisplayControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
             Controls.Add(button1);
@@ -97,8 +100,9 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ProductDisplayControl";
-            Size = new Size(346, 426);
+            Size = new Size(303, 320);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             panel1 = new Panel();
+            lableEclips1 = new LableEclips();
+            Cartbtn = new Button();
             txtBoxSearch = new TextBox();
             comboxCategory = new ComboBox();
             btnHome = new Button();
             btnECommerce = new Button();
             btnRegister = new Button();
             btnLogin = new Button();
-            tabControl1 = new TabControl();
+            Orders = new TabControl();
             pageRegister = new TabPage();
             CreateCustomerbtn = new Button();
             ErrorConfirmPassword = new Label();
@@ -56,16 +59,24 @@
             EmailTxt2 = new TextBox();
             pageHome = new TabPage();
             flowLayoutProductPanel = new FlowLayoutPanel();
+            Cart = new TabPage();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            tabPage1 = new TabPage();
+            orderbtn = new Button();
             panel1.SuspendLayout();
-            tabControl1.SuspendLayout();
+            Orders.SuspendLayout();
             pageRegister.SuspendLayout();
             pageLogin.SuspendLayout();
             pageHome.SuspendLayout();
+            Cart.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.HotTrack;
+            panel1.Controls.Add(orderbtn);
+            panel1.Controls.Add(lableEclips1);
+            panel1.Controls.Add(Cartbtn);
             panel1.Controls.Add(txtBoxSearch);
             panel1.Controls.Add(comboxCategory);
             panel1.Controls.Add(btnHome);
@@ -77,6 +88,33 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(956, 39);
             panel1.TabIndex = 0;
+            // 
+            // lableEclips1
+            // 
+            lableEclips1.AutoSize = true;
+            lableEclips1.BackColor = Color.IndianRed;
+            lableEclips1.Location = new Point(696, 3);
+            lableEclips1.Name = "lableEclips1";
+            lableEclips1.Size = new Size(13, 15);
+            lableEclips1.TabIndex = 9;
+            lableEclips1.Text = "0";
+            // 
+            // Cartbtn
+            // 
+            Cartbtn.BackColor = SystemColors.HotTrack;
+            Cartbtn.Dock = DockStyle.Right;
+            Cartbtn.FlatAppearance.BorderSize = 0;
+            Cartbtn.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            Cartbtn.FlatStyle = FlatStyle.Flat;
+            Cartbtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Cartbtn.ForeColor = Color.White;
+            Cartbtn.Image = (Image)resources.GetObject("Cartbtn.Image");
+            Cartbtn.Location = new Point(646, 0);
+            Cartbtn.Name = "Cartbtn";
+            Cartbtn.Size = new Size(63, 39);
+            Cartbtn.TabIndex = 4;
+            Cartbtn.UseVisualStyleBackColor = false;
+            Cartbtn.Click += Cartbtn_Click;
             // 
             // txtBoxSearch
             // 
@@ -113,7 +151,7 @@
             btnHome.ForeColor = Color.White;
             btnHome.Location = new Point(124, 0);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(93, 39);
+            btnHome.Size = new Size(79, 39);
             btnHome.TabIndex = 3;
             btnHome.Text = "Home";
             btnHome.UseVisualStyleBackColor = false;
@@ -168,18 +206,20 @@
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
-            // tabControl1
+            // Orders
             // 
-            tabControl1.Alignment = TabAlignment.Bottom;
-            tabControl1.Controls.Add(pageRegister);
-            tabControl1.Controls.Add(pageLogin);
-            tabControl1.Controls.Add(pageHome);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 39);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(956, 520);
-            tabControl1.TabIndex = 1;
+            Orders.Alignment = TabAlignment.Bottom;
+            Orders.Controls.Add(pageRegister);
+            Orders.Controls.Add(pageLogin);
+            Orders.Controls.Add(pageHome);
+            Orders.Controls.Add(Cart);
+            Orders.Controls.Add(tabPage1);
+            Orders.Dock = DockStyle.Fill;
+            Orders.Location = new Point(0, 39);
+            Orders.Name = "Orders";
+            Orders.SelectedIndex = 0;
+            Orders.Size = new Size(956, 520);
+            Orders.TabIndex = 1;
             // 
             // pageRegister
             // 
@@ -194,6 +234,7 @@
             pageRegister.Controls.Add(EmailTxt);
             pageRegister.Controls.Add(ErrorFullName);
             pageRegister.Controls.Add(FullNameTxt);
+            pageRegister.ForeColor = Color.Black;
             pageRegister.Location = new Point(4, 4);
             pageRegister.Name = "pageRegister";
             pageRegister.Padding = new Padding(3);
@@ -422,31 +463,79 @@
             pageHome.Text = "Home";
             pageHome.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel1
+            // flowLayoutProductPanel
             // 
+            flowLayoutProductPanel.AutoScroll = true;
             flowLayoutProductPanel.Location = new Point(-4, 2);
-            flowLayoutProductPanel.Name = "flowLayoutPanel1";
+            flowLayoutProductPanel.Name = "flowLayoutProductPanel";
             flowLayoutProductPanel.Size = new Size(952, 490);
             flowLayoutProductPanel.TabIndex = 0;
+            // 
+            // Cart
+            // 
+            Cart.Controls.Add(flowLayoutPanel1);
+            Cart.ForeColor = Color.Black;
+            Cart.Location = new Point(4, 4);
+            Cart.Name = "Cart";
+            Cart.Padding = new Padding(3);
+            Cart.Size = new Size(948, 492);
+            Cart.TabIndex = 3;
+            Cart.Text = "Cart";
+            Cart.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(3, 3);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(942, 486);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 4);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(948, 492);
+            tabPage1.TabIndex = 4;
+            tabPage1.Text = "Orders";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // orderbtn
+            // 
+            orderbtn.BackColor = SystemColors.HotTrack;
+            orderbtn.Dock = DockStyle.Right;
+            orderbtn.FlatAppearance.BorderSize = 0;
+            orderbtn.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            orderbtn.FlatStyle = FlatStyle.Flat;
+            orderbtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            orderbtn.ForeColor = Color.White;
+            orderbtn.Location = new Point(559, 0);
+            orderbtn.Name = "orderbtn";
+            orderbtn.Size = new Size(87, 39);
+            orderbtn.TabIndex = 10;
+            orderbtn.Text = "Orders";
+            orderbtn.UseVisualStyleBackColor = false;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(956, 559);
-            Controls.Add(tabControl1);
+            Controls.Add(Orders);
             Controls.Add(panel1);
             ForeColor = Color.White;
             Name = "Home";
             Text = "Home";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            tabControl1.ResumeLayout(false);
+            Orders.ResumeLayout(false);
             pageRegister.ResumeLayout(false);
             pageRegister.PerformLayout();
             pageLogin.ResumeLayout(false);
             pageLogin.PerformLayout();
             pageHome.ResumeLayout(false);
+            Cart.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -459,7 +548,7 @@
 		private Button btnHome;
 		private ComboBox comboxCategory;
 		private TextBox txtBoxSearch;
-		private TabControl tabControl1;
+		private TabControl Orders;
 		private TabPage pageRegister;
 		private TabPage pageLogin;
 		private TabPage pageHome;
@@ -480,5 +569,11 @@
 		private TextBox EmailTxt2;
 		private Button LoginBtn;
         private FlowLayoutPanel flowLayoutProductPanel;
+        private Button Cartbtn;
+        private LableEclips lableEclips1;
+        private TabPage Cart;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private TabPage tabPage1;
+        private Button orderbtn;
     }
 }

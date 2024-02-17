@@ -1,4 +1,7 @@
-﻿using System;
+﻿using E_Commerce.Applications.Services;
+using E_Commerce.Infrastructure.Context;
+using E_Commerce.Infrastructure.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,8 @@ namespace E_Commerce.Presentation
 {
     public partial class ProductDisplayControl : UserControl
     {
+        public  event Action<int> ADDProductIdToCart;
+        public static int counter;
         private int _id;
         private string? _name;
         private string? _categoryName;
@@ -22,6 +27,7 @@ namespace E_Commerce.Presentation
         public ProductDisplayControl()
         {
             InitializeComponent();
+            counter = 1;
         }
 
 
@@ -69,5 +75,11 @@ namespace E_Commerce.Presentation
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //if(ProductIdToCart !=null)
+            ADDProductIdToCart(_id);
+            ++counter;
+        }
     }
 }
