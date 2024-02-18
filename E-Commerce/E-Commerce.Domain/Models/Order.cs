@@ -14,5 +14,6 @@ namespace E_Commerce.Domain.Models
         public DateTime Date { get; set; }
         public OrderState State { get; set; }
         public User? User { get; set; }
+        public List<OrderDetails> OrderDetails { get; set; }
     }
 }
