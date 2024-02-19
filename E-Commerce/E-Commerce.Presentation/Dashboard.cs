@@ -94,13 +94,14 @@ namespace E_Commerce.Presentation
 			foreach (var p in Products)
 			{
 				ProductControl prodductControl = new ProductControl();
-				//prodductControl.Id = p.ID;
+				prodductControl.Id = p.Id;
 				prodductControl.pname = p.Name;
 				prodductControl.Price = p.Price;
 				prodductControl.Quantity = p.Quantity;
 				prodductControl.CategoryName = p.CategoryName;
 				prodductControl.image = Image.FromFile(p.Image);
-				flowLayoutPanel1.Controls.Add(prodductControl);
+                prodductControl.EduitProduct += BindProducts;
+                flowLayoutPanel1.Controls.Add(prodductControl);
 			}
 		}
 
@@ -346,6 +347,7 @@ namespace E_Commerce.Presentation
 		{
 			FormAddProdct formAddProdct = new FormAddProdct();
 			formAddProdct.ShowDialog();
+			BindProducts();
 		}
 
 		private void SClick(object sender, EventArgs e)

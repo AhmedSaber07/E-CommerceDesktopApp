@@ -70,3 +70,4 @@ C:\Users\Mohamed\Desktop\Visual Project\E-CommerceDesktopApp\E-Commerce\E-Commer
 C:\Users\Mohamed\Desktop\Visual Project\E-CommerceDesktopApp\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E-Commerce.Presentation.pdb
 C:\Users\Mohamed\Desktop\Visual Project\E-CommerceDesktopApp\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E-Commerce.Presentation.genruntimeconfig.cache
 C:\Users\Mohamed\Desktop\Visual Project\E-CommerceDesktopApp\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\ref\E-Commerce.Presentation.dll
+C:\Users\Mohamed\Desktop\Visual Project\E-CommerceDesktopApp\E-Commerce\E-Commerce.Presentation\obj\Debug\net7.0-windows\E_Commerce.Presentation.FormUpdateProdct.resources

@@ -1,4 +1,7 @@
-﻿using E_Commerce.Domain.Models;
+﻿using E_Commerce.Applications.Services;
+using E_Commerce.Domain.Models;
+using E_Commerce.Infrastructure.Context;
+using E_Commerce.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +22,10 @@ namespace E_Commerce.Presentation
 		private Image _image;
 		private decimal _price;
 		private int _quantity;
-		public ProductControl()
+        ProductService productService = new ProductService(new ProductRepository(new ApplicationDbContext()));
+
+        public event Action EduitProduct;
+        public ProductControl()
 		{
 			InitializeComponent();
 		}
@@ -70,13 +76,28 @@ namespace E_Commerce.Presentation
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+		    FormUpdateProdct formUpdateProdct = new FormUpdateProdct(_id);
+            formUpdateProdct.ShowDialog();
+            var x = productService.UpdateProduct(formUpdateProdct.Upproduct,formUpdateProdct.upId);
+           
+			if (x)
+			{
+				EduitProduct();
+				MessageBox.Show(" product had been Updated ");
+			}
+			
+        }
 
-
-		}
-
-		private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
 		{
+			Product p = productService.GetProduct(_id);
+            var x = productService.DeleteProduct(p,_id);
+            if (x)
+            {
+                EduitProduct();
+                MessageBox.Show(" product had been Deleted ");
+			}
 
-		}
-	}
+        }
+    }
 }

@@ -20,6 +20,8 @@ namespace E_Commerce.Domain.Models
         public decimal Price { get; set; }
 
         // relation 
+        [ForeignKey("Category")]
+        public int CategoryId {  get; set; }
         public Category? Category { get; set; }
         public List<OrderDetails>? OrderDetails { get; set; }
     }

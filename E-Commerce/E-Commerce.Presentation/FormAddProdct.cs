@@ -58,13 +58,12 @@ namespace E_Commerce.Presentation
 				product.Price = decimal.Parse(textBoxprice.Text);
 				product.Quantity = (int)numericUpDown1.Value;
 				product.Image = path2;
+				product.CategoryId = categorySelected.ID;
 				productService.CreateProduct(product);
-				categoryService.AssignProductToCatgeory(categorySelected, product);
+				//categoryService.AssignProductToCatgeory(categorySelected, product);
 				//Product product = mapper.Map<Product>(prod);
 				// Products.Controls.Add(prod);
 				path2 = " ";
-				Form1 dashboard = new Form1();
-				dashboard.BindProducts();
 				this.Hide();
 			}
 			else
