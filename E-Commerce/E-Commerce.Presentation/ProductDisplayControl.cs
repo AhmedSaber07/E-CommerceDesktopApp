@@ -77,21 +77,17 @@ namespace E_Commerce.Presentation
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			//if(ProductIdToCart !=null)
+
 			if (Program.userAuthentication)
 			{
 				ADDProductIdToCart(_id);
 			}
 			else
 			{
-				//Home home = new Home();
-				//home.Orders.SelectedTab = home.pageLogin;
+
 				MessageBox.Show("Register or Login First");
 			}
-			//else
-			//{
-			//    home.Orders.SelectedTab = home.pageLogin;
-			//}
+
 		}
 	}
 }

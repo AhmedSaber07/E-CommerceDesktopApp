@@ -46,11 +46,19 @@ namespace E_Commerce.Applications.Services
         {
             return _userRepository.GetAll();
         }
-        public User GetProduct(int id)
+        public User GetUserById(int id)
         {
             if (id != 0)
             {
                 return _userRepository.GetById(id);
+            }
+            return null;
+        }
+        public User GetUserByEmail(string email)
+        {
+            if (email != null)
+            {
+                return _userRepository.GetByEmail(email);
             }
             return null;
         }

@@ -64,6 +64,13 @@ namespace E_Commerce.Applications.Services
             }
             return null;
         }
+        public void updateQuantity(int productid,int quantity)
+        {
+            if (productid > 0 && quantity >0)
+            {
+                _productRepository.UpdateProductQuantity(productid,quantity);
+            }
+        }
         public IQueryable<Product> OrderByProductNameAsc()
         {
             return _productRepository.SortByNameAsc();

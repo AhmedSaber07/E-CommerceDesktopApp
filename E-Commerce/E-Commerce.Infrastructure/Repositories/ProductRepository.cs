@@ -10,27 +10,27 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Infrastructure.Repositories
 {
-    public class ProductRepository : BaseRepository<Product> , IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-         private ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
-        public ProductRepository(ApplicationDbContext context) : base(context) 
+        public ProductRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
 
-		public IQueryable<Product> SearchByName(string productName)
+        public IQueryable<Product> SearchByName(string productName)
         {
             return _context.Products.Where(s => s.Name == productName);
         }
 
         public IQueryable<Product> SortByNameAsc()
         {
-            return _context.Products.OrderBy(p=>p.Name);
+            return _context.Products.OrderBy(p => p.Name);
         }
         public IQueryable<Product> SortByNameDesc()
         {
-            return _context.Products.OrderByDescending(p=>p.Name);
+            return _context.Products.OrderByDescending(p => p.Name);
         }
 
         public IQueryable<Product> SortByPriceAsc()
@@ -40,6 +40,12 @@ namespace E_Commerce.Infrastructure.Repositories
         public IQueryable<Product> SortByPriceDesc()
         {
             return _context.Products.OrderByDescending(p => p.Price);
+        }
+
+        public void UpdateProductQuantity(int productid, int NewQuantity)
+        {
+            _context.Products.FirstOrDefault(p => p.ID == productid).Quantity -= NewQuantity;
+            Complete();
         }
     }
 }

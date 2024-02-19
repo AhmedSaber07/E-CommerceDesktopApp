@@ -27,7 +27,7 @@ namespace E_Commerce.Presentation
         public CartItems()
         {
             InitializeComponent();
-                 _productTotal= _amount*_price;
+            _amount = 1;
         }
         public int Id
         {
@@ -42,8 +42,8 @@ namespace E_Commerce.Presentation
 
         public string? Title { get => _title; set { _title = value; CartTitlelbl.Text = value; } }
         public string? Description { get => _description; set { _description = value; CartDescriptionlbl.Text = value; } }
-        public int Amount { get => _amount; set { _amount = 1; } }
-        public decimal ProductTotal { get => _productTotal; set { _productTotal = value; } }
+        public int Amount { get => _amount; set { _amount = value; } }
+        public decimal ProductTotal { get => _amount * _price;  }
         public decimal Price { get => _price; set { _price = value; CartPricelbl.Text = value.ToString(); } }
         public int Quantity { get => _quantity; set { _quantity = value; Quantitylbl.Text = 1.ToString(); } }
 
@@ -53,7 +53,11 @@ namespace E_Commerce.Presentation
         }
         private void IncreaseCartbtn_Click(object sender, EventArgs e)
         {
-            if (_amount < _quantity) Quantitylbl.Text = (++_amount).ToString();
+            if (_amount < _quantity)
+            {
+                _amount += 1;
+                Quantitylbl.Text = _amount.ToString();
+            }
 
             _productTotal= _amount*_price;
             CartPricelbl.Text= (_productTotal).ToString();
@@ -62,7 +66,11 @@ namespace E_Commerce.Presentation
 
         private void DecreaseCartbtn_Click(object sender, EventArgs e)
         {
-            if (_amount>1) Quantitylbl.Text = (--_amount).ToString();
+            if (_amount > 1)
+            {
+                _amount -= 1;
+                Quantitylbl.Text = _amount.ToString();
+            }
 
             _productTotal = _amount * _price;
             CartPricelbl.Text = (_productTotal).ToString();

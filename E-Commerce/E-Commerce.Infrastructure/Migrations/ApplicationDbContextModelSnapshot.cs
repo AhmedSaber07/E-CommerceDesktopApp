@@ -35,7 +35,7 @@ namespace E_Commerce.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Models.Order", b =>
@@ -55,14 +55,14 @@ namespace E_Commerce.Infrastructure.Migrations
                     b.Property<int>("State")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserID")
+                    b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Models.OrderDetails", b =>
@@ -76,7 +76,7 @@ namespace E_Commerce.Infrastructure.Migrations
                     b.Property<int?>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductID")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -89,9 +89,9 @@ namespace E_Commerce.Infrastructure.Migrations
 
                     b.HasIndex("OrderID");
 
-                    b.HasIndex("ProductID");
+                    b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails", (string)null);
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Models.Product", b =>
@@ -125,7 +125,7 @@ namespace E_Commerce.Infrastructure.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Models.User", b =>
@@ -153,29 +153,31 @@ namespace E_Commerce.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Models.Order", b =>
                 {
                     b.HasOne("E_Commerce.Domain.Models.User", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Models.OrderDetails", b =>
                 {
-                    b.HasOne("E_Commerce.Domain.Models.Order", "Order")
-                        .WithMany()
+                    b.HasOne("E_Commerce.Domain.Models.Order", null)
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderID");
 
                     b.HasOne("E_Commerce.Domain.Models.Product", "Product")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("ProductID");
-
-                    b.Navigation("Order");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
@@ -192,6 +194,11 @@ namespace E_Commerce.Infrastructure.Migrations
             modelBuilder.Entity("E_Commerce.Domain.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("E_Commerce.Domain.Models.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 
             modelBuilder.Entity("E_Commerce.Domain.Models.Product", b =>

@@ -10,6 +10,7 @@ namespace E_Commerce.Applications.Contracts
     public interface IProductRepository : IBaseRepository<Product>
     {
         IQueryable<Product> SearchByName(string productName);
+        void UpdateProductQuantity (int productid,int NewQuantity);
 		IQueryable<Product> SortByNameAsc();
         IQueryable<Product> SortByNameDesc();
         IQueryable<Product> SortByPriceDesc();
