@@ -1,24 +1,24 @@
 ﻿namespace E_Commerce.Presentation
 {
-	partial class Home
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class Home
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         #region Windows Form Designer generated code
 
@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             orderbtn = new Button();
             lableEclips1 = new LableEclips();
@@ -39,7 +42,7 @@
             btnECommerce = new Button();
             btnRegister = new Button();
             btnLogin = new Button();
-            Orders = new TabControl();
+            selectTapPage = new TabControl();
             pageRegister = new TabPage();
             CreateCustomerbtn = new Button();
             ErrorConfirmPassword = new Label();
@@ -63,21 +66,20 @@
             Cart = new TabPage();
             flowLayoutPanel1 = new FlowLayoutPanel();
             PlaceOrderCartbtn = new Button();
-            tabPage1 = new TabPage();
-            OrderdataGridView = new DataGridView();
-            FinalPrice = new DataGridViewTextBoxColumn();
+            orderPage = new TabPage();
+            dgrvOrders = new DataGridView();
             Date = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             State = new DataGridViewTextBoxColumn();
-            ID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
-            Orders.SuspendLayout();
+            selectTapPage.SuspendLayout();
             pageRegister.SuspendLayout();
             pageLogin.SuspendLayout();
             pageHome.SuspendLayout();
             Cart.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)OrderdataGridView).BeginInit();
+            orderPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgrvOrders).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -107,18 +109,20 @@
             orderbtn.FlatStyle = FlatStyle.Flat;
             orderbtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             orderbtn.ForeColor = Color.White;
-            orderbtn.Location = new Point(559, 0);
+            orderbtn.Location = new Point(556, 0);
             orderbtn.Name = "orderbtn";
-            orderbtn.Size = new Size(87, 39);
+            orderbtn.Size = new Size(70, 39);
             orderbtn.TabIndex = 10;
             orderbtn.Text = "Orders";
             orderbtn.UseVisualStyleBackColor = false;
+            orderbtn.Click += orderbtn_Click;
             // 
             // lableEclips1
             // 
             lableEclips1.AutoSize = true;
             lableEclips1.BackColor = Color.IndianRed;
-            lableEclips1.Location = new Point(696, 3);
+            lableEclips1.Dock = DockStyle.Right;
+            lableEclips1.Location = new Point(626, 0);
             lableEclips1.Name = "lableEclips1";
             lableEclips1.Size = new Size(13, 15);
             lableEclips1.TabIndex = 9;
@@ -135,9 +139,9 @@
             Cartbtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             Cartbtn.ForeColor = Color.White;
             Cartbtn.Image = (Image)resources.GetObject("Cartbtn.Image");
-            Cartbtn.Location = new Point(646, 0);
+            Cartbtn.Location = new Point(639, 0);
             Cartbtn.Name = "Cartbtn";
-            Cartbtn.Size = new Size(63, 39);
+            Cartbtn.Size = new Size(70, 39);
             Cartbtn.TabIndex = 4;
             Cartbtn.UseVisualStyleBackColor = false;
             Cartbtn.Click += Cartbtn_Click;
@@ -145,12 +149,13 @@
             // txtBoxSearch
             // 
             txtBoxSearch.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtBoxSearch.Location = new Point(372, 0);
+            txtBoxSearch.Location = new Point(362, 0);
             txtBoxSearch.Multiline = true;
             txtBoxSearch.Name = "txtBoxSearch";
             txtBoxSearch.PlaceholderText = "Search";
-            txtBoxSearch.Size = new Size(298, 39);
+            txtBoxSearch.Size = new Size(178, 39);
             txtBoxSearch.TabIndex = 1;
+            txtBoxSearch.TextChanged += txtBoxSearch_TextChanged;
             // 
             // comboxCategory
             // 
@@ -166,6 +171,7 @@
             comboxCategory.Name = "comboxCategory";
             comboxCategory.Size = new Size(122, 33);
             comboxCategory.TabIndex = 1;
+            comboxCategory.SelectedIndexChanged += comboxCategory_SelectedIndexChanged;
             // 
             // btnHome
             // 
@@ -232,20 +238,20 @@
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
-            // Orders
+            // selectTapPage
             // 
-            Orders.Alignment = TabAlignment.Bottom;
-            Orders.Controls.Add(pageRegister);
-            Orders.Controls.Add(pageLogin);
-            Orders.Controls.Add(pageHome);
-            Orders.Controls.Add(Cart);
-            Orders.Controls.Add(tabPage1);
-            Orders.Dock = DockStyle.Fill;
-            Orders.Location = new Point(0, 39);
-            Orders.Name = "Orders";
-            Orders.SelectedIndex = 0;
-            Orders.Size = new Size(956, 520);
-            Orders.TabIndex = 1;
+            selectTapPage.Alignment = TabAlignment.Bottom;
+            selectTapPage.Controls.Add(pageRegister);
+            selectTapPage.Controls.Add(pageLogin);
+            selectTapPage.Controls.Add(pageHome);
+            selectTapPage.Controls.Add(Cart);
+            selectTapPage.Controls.Add(orderPage);
+            selectTapPage.Dock = DockStyle.Fill;
+            selectTapPage.Location = new Point(0, 39);
+            selectTapPage.Name = "selectTapPage";
+            selectTapPage.SelectedIndex = 0;
+            selectTapPage.Size = new Size(956, 520);
+            selectTapPage.TabIndex = 1;
             // 
             // pageRegister
             // 
@@ -492,9 +498,10 @@
             // flowLayoutProductPanel
             // 
             flowLayoutProductPanel.AutoScroll = true;
-            flowLayoutProductPanel.Location = new Point(-4, 2);
+            flowLayoutProductPanel.Dock = DockStyle.Fill;
+            flowLayoutProductPanel.Location = new Point(3, 3);
             flowLayoutProductPanel.Name = "flowLayoutProductPanel";
-            flowLayoutProductPanel.Size = new Size(952, 490);
+            flowLayoutProductPanel.Size = new Size(942, 486);
             flowLayoutProductPanel.TabIndex = 0;
             // 
             // Cart
@@ -521,6 +528,7 @@
             // 
             // PlaceOrderCartbtn
             // 
+            PlaceOrderCartbtn.Dock = DockStyle.Bottom;
             PlaceOrderCartbtn.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point);
             PlaceOrderCartbtn.Location = new Point(3, 3);
             PlaceOrderCartbtn.Name = "PlaceOrderCartbtn";
@@ -530,66 +538,86 @@
             PlaceOrderCartbtn.UseVisualStyleBackColor = true;
             PlaceOrderCartbtn.Click += PlaceOrderCartbtn_Click;
             // 
-            // tabPage1
+            // orderPage
             // 
-            tabPage1.Controls.Add(OrderdataGridView);
-            tabPage1.Location = new Point(4, 4);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(948, 492);
-            tabPage1.TabIndex = 4;
-            tabPage1.Text = "Orders";
-            tabPage1.UseVisualStyleBackColor = true;
+            orderPage.Controls.Add(dgrvOrders);
+            orderPage.Location = new Point(4, 4);
+            orderPage.Name = "orderPage";
+            orderPage.Size = new Size(948, 492);
+            orderPage.TabIndex = 4;
+            orderPage.Text = "Orders";
+            orderPage.UseVisualStyleBackColor = true;
             // 
-            // OrderdataGridView
+            // dgrvOrders
             // 
-            OrderdataGridView.BackgroundColor = SystemColors.Control;
-            OrderdataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrderdataGridView.Columns.AddRange(new DataGridViewColumn[] { FinalPrice, Date, State, ID });
-            OrderdataGridView.Location = new Point(-4, 0);
-            OrderdataGridView.Name = "OrderdataGridView";
-            OrderdataGridView.RowHeadersVisible = false;
-            OrderdataGridView.RowHeadersWidth = 14;
-            OrderdataGridView.RowTemplate.Height = 25;
-            OrderdataGridView.Size = new Size(838, 492);
-            OrderdataGridView.TabIndex = 0;
-            // 
-            // FinalPrice
-            // 
-            FinalPrice.HeaderText = "TotalPrice";
-            FinalPrice.Name = "FinalPrice";
-            FinalPrice.ReadOnly = true;
+            dgrvOrders.AllowUserToAddRows = false;
+            dgrvOrders.AllowUserToDeleteRows = false;
+            dgrvOrders.AllowUserToResizeColumns = false;
+            dgrvOrders.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.IndianRed;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dgrvOrders.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgrvOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgrvOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgrvOrders.Columns.AddRange(new DataGridViewColumn[] { Date, Total, State });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.IndianRed;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgrvOrders.DefaultCellStyle = dataGridViewCellStyle2;
+            dgrvOrders.Dock = DockStyle.Fill;
+            dgrvOrders.Location = new Point(0, 0);
+            dgrvOrders.Name = "dgrvOrders";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Black;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgrvOrders.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgrvOrders.RowTemplate.Height = 25;
+            dgrvOrders.Size = new Size(948, 492);
+            dgrvOrders.TabIndex = 0;
             // 
             // Date
             // 
+            Date.DataPropertyName = "Date";
             Date.HeaderText = "OrderDate";
             Date.Name = "Date";
-            Date.ReadOnly = true;
+            // 
+            // Total
+            // 
+            Total.DataPropertyName = "FinalPrice";
+            Total.HeaderText = "Total";
+            Total.Name = "Total";
             // 
             // State
             // 
-            State.HeaderText = "Order-State";
+            State.DataPropertyName = "State";
+            State.HeaderText = "State";
             State.Name = "State";
-            State.ReadOnly = true;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "Order-ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(956, 559);
-            Controls.Add(Orders);
+            Controls.Add(selectTapPage);
             Controls.Add(panel1);
             ForeColor = Color.White;
             Name = "Home";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
+            Load += Home_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            Orders.ResumeLayout(false);
+            selectTapPage.ResumeLayout(false);
             pageRegister.ResumeLayout(false);
             pageRegister.PerformLayout();
             pageLogin.ResumeLayout(false);
@@ -597,52 +625,51 @@
             pageHome.ResumeLayout(false);
             Cart.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)OrderdataGridView).EndInit();
+            orderPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgrvOrders).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-		private Button btnLogin;
-		private Button btnECommerce;
-		private Button btnHome;
-		private ComboBox comboxCategory;
-		private TextBox txtBoxSearch;
-		private TabPage pageRegister;
-		private TabPage pageHome;
-		private Button CreateCustomerbtn;
-		private Label ErrorConfirmPassword;
-		private TextBox ConfirmPasswordTxt;
-		private Label ErrorPassword;
-		private TextBox PasswordTxt;
-		private Label ErrorPhoneNumber;
-		private TextBox PhoneNumberTxt;
-		private Label ErrorEmail;
-		private TextBox EmailTxt;
-		private Label ErrorFullName;
-		private TextBox FullNameTxt;
-		private Label ErrorPassword1;
-		private TextBox PasswordTxt2;
-		private Label ErrorEmail1;
-		private TextBox EmailTxt2;
-		private Button LoginBtn;
-		private FlowLayoutPanel flowLayoutProductPanel;
-		private Button Cartbtn;
-		private LableEclips lableEclips1;
-		private TabPage Cart;
-		private FlowLayoutPanel flowLayoutPanel1;
-		private TabPage tabPage1;
-		private Button orderbtn;
-		public Button btnRegister;
-		public TabPage pageLogin;
-		public TabControl Orders;
+        private Button btnLogin;
+        private Button btnECommerce;
+        private Button btnHome;
+        private ComboBox comboxCategory;
+        private TextBox txtBoxSearch;
+        private TabPage pageRegister;
+        private TabPage pageHome;
+        private Button CreateCustomerbtn;
+        private Label ErrorConfirmPassword;
+        private TextBox ConfirmPasswordTxt;
+        private Label ErrorPassword;
+        private TextBox PasswordTxt;
+        private Label ErrorPhoneNumber;
+        private TextBox PhoneNumberTxt;
+        private Label ErrorEmail;
+        private TextBox EmailTxt;
+        private Label ErrorFullName;
+        private TextBox FullNameTxt;
+        private Label ErrorPassword1;
+        private TextBox PasswordTxt2;
+        private Label ErrorEmail1;
+        private TextBox EmailTxt2;
+        private Button LoginBtn;
+        private FlowLayoutPanel flowLayoutProductPanel;
+        private Button Cartbtn;
+        private LableEclips lableEclips1;
+        private TabPage Cart;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private TabPage orderPage;
+        private Button orderbtn;
+        public Button btnRegister;
+        public TabPage pageLogin;
+        public TabControl selectTapPage;
         private Button PlaceOrderCartbtn;
-        private DataGridView OrderdataGridView;
-        private DataGridViewTextBoxColumn FinalPrice;
+        private DataGridView dgrvOrders;
         private DataGridViewTextBoxColumn Date;
+        private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn State;
-        private DataGridViewTextBoxColumn ID;
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace E_Commerce.Presentation
             get { return _image; }
             set { _image = value; pictureBox1.Image = value; }
         }
+
 
         public string? Title { get => _title; set { _title = value; CartTitlelbl.Text = value; } }
         public string? Description { get => _description; set { _description = value; CartDescriptionlbl.Text = value; } }
@@ -75,5 +77,6 @@ namespace E_Commerce.Presentation
             _productTotal = _amount * _price;
             CartPricelbl.Text = (_productTotal).ToString();
         }
+
     }
 }

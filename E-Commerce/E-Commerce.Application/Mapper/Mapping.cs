@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using E_Commerce.Domain.Dtos;
+using E_Commerce.Domain.Dtos.OrdersDto;
 using E_Commerce.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -72,5 +73,27 @@ namespace E_Commerce.Applications.Mapper
 			return config.CreateMapper();
 		}
 
-	}
+		public static IMapper MappingDisplayOrdersOfUser()
+		{
+
+			var config = new MapperConfiguration(c =>
+			{
+				c.CreateMap<Order, DisplayOrderForUserDto>();
+			});
+			return config.CreateMapper();
+		}
+
+        public static IMapper MappingDisplayAllOrders()
+        {
+
+            var config = new MapperConfiguration(c =>
+            {
+				c.CreateMap<Order, DisplayOrderDto>()
+				.ForMember(dto => dto.Email, src => src.MapFrom(email => email.User.Email))
+				.ForMember(dto => dto.FullName, src => src.MapFrom(email => email.User.Name));
+            });
+            return config.CreateMapper();
+        }
+
+    }
 }

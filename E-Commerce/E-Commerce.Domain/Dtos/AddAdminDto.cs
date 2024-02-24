@@ -9,6 +9,6 @@ namespace E_Commerce.Domain.Dtos
 {
     public class AddAdminDto:AddUserDto
     {
-        public UserType UserType { get; set; } = UserType.Admin;
+        public UserRole Role { get; set; } = UserRole.Admin;
     }
 }

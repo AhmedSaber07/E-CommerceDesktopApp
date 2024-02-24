@@ -8,8 +8,8 @@ namespace E_Commerce.Applications.Contracts
 {
     public interface IOrderRepository: IBaseRepository<Order>
     {
-        Order ChangeStatus(int id, OrderState newStatus);
+        Order ChangeStatus(int OrderId,int UserId, OrderState newStatus);
 
-
+        IQueryable<Order> GetOrdersOfUser(int userId);
     }
 }

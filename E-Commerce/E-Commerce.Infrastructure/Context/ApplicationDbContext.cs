@@ -12,8 +12,8 @@ namespace E_Commerce.Infrastructure.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Data Source=DESKTOP-TDQADM2\\AHMEDSABER;Initial Catalog=EcommerceDesktopDB;Integrated Security=True;encrypt=false");
-            optionsBuilder.UseSqlServer("Server=(LocalDB)\\MSSQLLocalDB;Database=EcommerceDesktopDB;Trusted_Connection=True;MultipleActiveResultSets=true;encrypt=false");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-TDQADM2\\AHMEDSABER;Initial Catalog=EcommerceDesktopDB;Integrated Security=True;encrypt=false");
+           // optionsBuilder.UseSqlServer("Server=(LocalDB)\\MSSQLLocalDB;Database=EcommerceDesktopDB;Trusted_Connection=True;MultipleActiveResultSets=true;encrypt=false");
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }

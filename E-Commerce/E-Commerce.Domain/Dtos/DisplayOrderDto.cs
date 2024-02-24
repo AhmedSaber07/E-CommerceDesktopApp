@@ -9,10 +9,12 @@ namespace E_Commerce.Domain.Dtos
 {
     public class DisplayOrderDto
     {
+        public int ID { get; set; }
+        public int UserID { get; set; }
         public string? FullName { get; set; }
         public string? Email { get; set; }
-        public OrderState OrderState { get; set; }
-        public DateTime OrderDate { get; set; }
+        public OrderState State { get; set; }
+        public DateTime Date { get; set; }
         public decimal FinalPrice { get; set; }
     }
 }

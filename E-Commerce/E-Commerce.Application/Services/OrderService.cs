@@ -29,7 +29,7 @@ namespace E_Commerce.Applications.Services
 
         public IQueryable<Order> GetAllOrders()
         {
-          var orders= _iOrderepository.GetAll().Include(e=>e.OrderDetails);
+          var orders= _iOrderepository.GetAll().Include(e=>e.OrderDetails).Include(e => e.User);
             return orders;
         }
 
@@ -40,11 +40,11 @@ namespace E_Commerce.Applications.Services
         }
 
 
-        public bool ChangeTheStautsOfOrder(int orderId, OrderState newStatus)
+        public bool ChangeTheStautsOfOrder(int orderId,int UserId, OrderState newStatus)
         {
             if (orderId != null)
             {
-                _iOrderepository.ChangeStatus(orderId,newStatus);
+                _iOrderepository.ChangeStatus(orderId,UserId,newStatus);
                 return true;
             }
             return false;
@@ -62,7 +62,15 @@ namespace E_Commerce.Applications.Services
             return false;
         }
 
-        private bool IsValidOrder(Order order)
+		public IQueryable<Order> GetOrdersOfUser(int userId)
+        {
+            if (userId != 0)
+                return _iOrderepository.GetOrdersOfUser(userId);
+            return null;
+        }
+
+
+		private bool IsValidOrder(Order order)
         {
             if (order.OrderDetails.Count <= 0)
                 return false;

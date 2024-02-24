@@ -18,7 +18,7 @@ namespace E_Commerce.Domain.Models
         public string? PhoneNumber  { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
-        public UserType UserType { get; set; }
+        public UserRole Role { get; set; }
         
         //Relation
         public List<Order>? Orders { get; set; }

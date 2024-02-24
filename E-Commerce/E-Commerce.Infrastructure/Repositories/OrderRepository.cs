@@ -18,12 +18,17 @@ namespace E_Commerce.Infrastructure.Repositories
             _context = context;
         }
 
-        public Order ChangeStatus(int id, OrderState newStatus)
+        public Order ChangeStatus(int OrderId,int UserId, OrderState newStatus)
 		{
-           Order order =  _context.Orders.FirstOrDefault(e => e.ID == id);
+            Order order = _context.Orders.FirstOrDefault(e => e.UserID == UserId && e.ID == OrderId);
             order.State = newStatus;
             _context.SaveChanges();
             return order;
         }
-    }
+
+		public IQueryable<Order> GetOrdersOfUser(int userId)
+		{
+            return _context.Orders.Where(e => e.UserID == userId).Include(e => e.OrderDetails);
+		}
+	}
 }

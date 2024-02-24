@@ -56,11 +56,11 @@ namespace E_Commerce.Applications.Services
             }
             return null;
         }
-        public IQueryable<Product> SearchByName(string productName)
+        public IQueryable<Product> SearchByName(string productName,int categoryId)
         {
             if (productName is not null)
             {
-                return _productRepository.SearchByName(productName);
+                return _productRepository.SearchByName(productName,categoryId);
             }
             return null;
         }
@@ -70,6 +70,13 @@ namespace E_Commerce.Applications.Services
             {
                 _productRepository.UpdateProductQuantity(productid,quantity);
             }
+        }
+
+        public IQueryable<Product> GetProductsByCategoryId(int categoryId)
+        {
+            if (categoryId <= 0)
+                return null;
+            return _productRepository.GetProductsByCategoryId(categoryId);
         }
         public IQueryable<Product> OrderByProductNameAsc()
         {

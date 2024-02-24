@@ -19,9 +19,17 @@ namespace E_Commerce.Infrastructure.Repositories
             _context = context;
         }
 
-        public IQueryable<Product> SearchByName(string productName)
+        public IQueryable<Product> GetProductsByCategoryId(int categoryId)
         {
-            return _context.Products.Where(s => s.Name == productName);
+            return _context.Products.Include(e => e.Category).Where(e => e.CategoryId == categoryId);
+        }
+
+        public IQueryable<Product> SearchByName(string productName, int categoryId)
+        {
+            if(categoryId==0)
+            return _context.Products.Where(s => s.Name.Contains(productName));
+
+            return _context.Products.Where(s => s.Name.Contains(productName) && s.CategoryId==categoryId);
         }
 
         public IQueryable<Product> SortByNameAsc()

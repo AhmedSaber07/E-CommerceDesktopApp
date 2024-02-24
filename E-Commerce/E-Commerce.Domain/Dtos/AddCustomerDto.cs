@@ -9,6 +9,6 @@ namespace E_Commerce.Domain.Dtos
 {
     public class AddCustomerDto:AddUserDto
     {
-        public UserType UserType { get; set; } = UserType.Customer;
+        public UserRole Role { get; set; } = UserRole.Customer;
     }
 }

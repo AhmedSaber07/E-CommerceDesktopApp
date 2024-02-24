@@ -90,12 +90,16 @@ namespace E_Commerce.Presentation
 
         private void button2_Click(object sender, EventArgs e)
 		{
-			Product p = productService.GetProduct(_id);
-            var x = productService.DeleteProduct(p,_id);
-            if (x)
-            {
-                EduitProduct();
-                MessageBox.Show(" product had been Deleted ");
+			DialogResult result = MessageBox.Show("Are you Sure you want delete this product?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (result == DialogResult.Yes)
+			{
+				Product p = productService.GetProduct(_id);
+				var x = productService.DeleteProduct(p, _id);
+				if (x)
+				{
+					EduitProduct();
+					MessageBox.Show(" product had been Deleted ");
+				}
 			}
 
         }

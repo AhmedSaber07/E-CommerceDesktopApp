@@ -2,6 +2,7 @@
 using E_Commerce.Applications.Mapper;
 using E_Commerce.Applications.Services;
 using E_Commerce.Domain.Dtos;
+using E_Commerce.Domain.Dtos.OrdersDto;
 using E_Commerce.Domain.Enums;
 using E_Commerce.Domain.Models;
 using E_Commerce.Infrastructure.Context;
@@ -13,10 +14,13 @@ using System.Data;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
@@ -30,28 +34,35 @@ namespace E_Commerce.Presentation
         ProductService productService = new ProductService(new ProductRepository(new ApplicationDbContext()));
         OrderService orderService = new OrderService(new OrderRepository(new ApplicationDbContext()));
         private List<CartItems> CartItemsproducts = new List<CartItems>();
+        List<Product> Products;
         private static User LoginedUser;
 
         public Home()
         {
             InitializeComponent();
+            Products = productService.GetProducts().ToList();
             SelectHomePage();
             BindCategories();
-            BindProducts();
+            BindProducts(Products);
 
+        }
+        private void BindOrders(int userId)
+        {
+            mapper = Mapping.MappingDisplayOrdersOfUser();
+            List<DisplayOrderForUserDto> orders = mapper.Map<List<DisplayOrderForUserDto>>(orderService.GetOrdersOfUser(userId).ToList());
+            dgrvOrders.DataSource = orders;
         }
         private void BindCategories()
         {
             var categories = categoryService.GetCategories().ToList();
-
+            categories.Insert(0, new Category { ID = 0, Name = "All" });
             comboxCategory.DataSource = categories;
             comboxCategory.DisplayMember = "Name";
             comboxCategory.ValueMember = "ID";
         }
-        private void BindProducts()
+        private void BindProducts(List<Product> Products)
         {
             flowLayoutProductPanel.Controls.Clear();
-            var Products = productService.GetProducts().ToList();
             foreach (var p in Products)
             {
                 ProductDisplayControl product = new ProductDisplayControl();
@@ -59,13 +70,21 @@ namespace E_Commerce.Presentation
                 product.pname = p.Name;
                 product.Price = p.Price;
                 product.Quantity = p.Quantity;
-                product.CategoryName = p.Category.Name;
-                product.image = Image.FromFile(p.Image);
+                //product.CategoryName = p.Category.Name;
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] data = webClient.DownloadData(p.Image);
+                    using (var stream = new System.IO.MemoryStream(data))
+                    {
+                        product.image = Image.FromStream(stream);
+                    }
+                }
+                //product.image = Image.FromFile(p.Image);
                 if (product.Quantity <= 0)
                 {
                     product.button1.Text = "Out Of Stock";
                     product.button1.BackColor = Color.Red;
-                    product.button1.Enabled =false;
+                    product.button1.Enabled = false;
                 }
                 else
                 {
@@ -74,7 +93,7 @@ namespace E_Commerce.Presentation
                     product.button1.Enabled = true;
                 }
                 product.ADDProductIdToCart += BindTOCart;
-                    flowLayoutProductPanel.Controls.Add(product);
+                flowLayoutProductPanel.Controls.Add(product);
             }
         }
         public void BindTOCart(int id)
@@ -88,7 +107,14 @@ namespace E_Commerce.Presentation
                 cartItem.Title = product.Name;
                 cartItem.Description = product.Description;
                 cartItem.Price = product.Price;
-                cartItem.image = Image.FromFile(product.Image);
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] data = webClient.DownloadData(product.Image);
+                    using (var stream = new System.IO.MemoryStream(data))
+                    {
+                        cartItem.image = Image.FromStream(stream);
+                    }
+                }
                 cartItem.Quantity = product.Quantity;
                 CartItemsproducts.Add(cartItem);
                 flowLayoutPanel1.Controls.Add(cartItem);
@@ -113,7 +139,7 @@ namespace E_Commerce.Presentation
         {
             var orders = orderService;
 
-           
+
         }
         private void isRequired(Label label)
         {
@@ -205,7 +231,7 @@ namespace E_Commerce.Presentation
 
         private void CreateCustomerbtn_Click(object sender, EventArgs e)
         {
-            bool isInValidData = pageRegister.Controls.OfType<TextBox>().Any(e => e.Text == "");
+            bool isInValidData = pageRegister.Controls.OfType<System.Windows.Forms.TextBox>().Any(e => e.Text == "");
             bool allLabelsNotVisible = pageRegister.Controls.OfType<Label>().All(label => !label.Visible);
             if (allLabelsNotVisible && !isInValidData)
             {
@@ -224,7 +250,7 @@ namespace E_Commerce.Presentation
                     MessageBox.Show("Welcome To E-Commerce", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     WhenUserLoginOrRegister(customer.Name);
                     SelectHomePage();
-                    foreach (TextBox textBox in pageRegister.Controls.OfType<TextBox>())
+                    foreach (System.Windows.Forms.TextBox textBox in pageRegister.Controls.OfType<System.Windows.Forms.TextBox>())
                     {
                         textBox.Text = "";
                     }
@@ -248,7 +274,7 @@ namespace E_Commerce.Presentation
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (btnRegister.Text == "Register")
-                Orders.SelectedTab = pageRegister;
+                selectTapPage.SelectedTab = pageRegister;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -256,7 +282,7 @@ namespace E_Commerce.Presentation
             if (btnLogin.Text == "LogOut")
                 WhenUserLogOut();
             else
-                Orders.SelectedTab = pageLogin;
+                selectTapPage.SelectedTab = pageLogin;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -265,7 +291,7 @@ namespace E_Commerce.Presentation
         }
         private void SelectHomePage()
         {
-            Orders.SelectedTab = pageHome;
+            selectTapPage.SelectedTab = pageHome;
         }
 
         private void WhenUserLoginOrRegister(string FullName)
@@ -279,6 +305,7 @@ namespace E_Commerce.Presentation
             btnLogin.Text = "Login";
             btnRegister.Text = "Register";
             Program.userAuthentication = false;
+            selectTapPage.SelectedTab = pageLogin;
         }
 
         private void btnECommerce_Click(object sender, EventArgs e)
@@ -309,7 +336,7 @@ namespace E_Commerce.Presentation
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            bool isInValidData = pageLogin.Controls.OfType<TextBox>().Any(e => e.Text == "");
+            bool isInValidData = pageLogin.Controls.OfType<System.Windows.Forms.TextBox>().Any(e => e.Text == "");
             bool allLabelsNotVisible = pageLogin.Controls.OfType<Label>().All(label => !label.Visible);
             if (allLabelsNotVisible && !isInValidData)
             {
@@ -325,7 +352,7 @@ namespace E_Commerce.Presentation
                 {
 
                     MessageBox.Show("Welcome To E-Commerce", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if (user.UserType == UserType.Admin)
+                    if (user.Role == UserRole.Admin)
                     {
                         this.Hide();
                         Form1 form1 = new Form1();
@@ -336,7 +363,7 @@ namespace E_Commerce.Presentation
                         WhenUserLoginOrRegister(user.Name);
                         SelectHomePage();
                     }
-                    foreach (TextBox textBox in pageLogin.Controls.OfType<TextBox>())
+                    foreach (System.Windows.Forms.TextBox textBox in pageLogin.Controls.OfType<System.Windows.Forms.TextBox>())
                     {
                         textBox.Text = "";
                     }
@@ -360,7 +387,14 @@ namespace E_Commerce.Presentation
 
         private void Cartbtn_Click(object sender, EventArgs e)
         {
-            Orders.SelectedTab = Cart;
+            if (Program.userAuthentication)
+            {
+                selectTapPage.SelectedTab = Cart;
+            }
+            else
+            {
+                MessageBox.Show("Login or Register first!", "", MessageBoxButtons.OK);
+            }
         }
 
         private void PlaceOrderCartbtn_Click(object sender, EventArgs e)
@@ -400,8 +434,51 @@ namespace E_Commerce.Presentation
                 flowLayoutPanel1.Controls.Remove(item);
             }
 
+            ProductDisplayControl.counter = 0;
+            lableEclips1.Visible = false;
+            lableEclips1.Text = ProductDisplayControl.counter.ToString();
             CartItemsproducts.Clear();
-            BindProducts();
+            BindProducts(Products);
+        }
+
+        private void orderbtn_Click(object sender, EventArgs e)
+        {
+            if (Program.userAuthentication)
+            {
+                BindOrders(LoginedUser.ID);
+                selectTapPage.SelectedTab = orderPage;
+            }
+            else
+            {
+                MessageBox.Show("Login or Register first!", "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Category category = (Category)comboxCategory.SelectedItem;
+            if (category.ID > 0)
+            {
+                List<Product> getProducts = productService.GetProductsByCategoryId(category.ID).ToList();
+                BindProducts(getProducts);
+            }
+            else
+            {
+                BindProducts(Products);
+            }
+
+        }
+
+        private void txtBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            Category category = (Category)comboxCategory.SelectedItem;
+            List<Product> getProducts = productService.SearchByName(txtBoxSearch.Text, category.ID).ToList();
+            BindProducts(getProducts);
         }
     }
 }
