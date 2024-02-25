@@ -63,7 +63,7 @@ namespace E_Commerce.Presentation
         public decimal Price
         {
             get { return _price; }
-            set { _price = value; label2.Text = " " + value + " $"; }
+            set { _price = value; label2.Text =value.ToString("C"); }
         }
         [Category("CustomProps")]
         public int Quantity

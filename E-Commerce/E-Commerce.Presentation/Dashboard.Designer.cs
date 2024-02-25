@@ -81,7 +81,6 @@ namespace E_Commerce.Presentation
             CategoriesPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCategory).BeginInit();
             ProductsPage.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             OrdersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgrViewOrders).BeginInit();
             AddAdminPage.SuspendLayout();
@@ -334,6 +333,7 @@ namespace E_Commerce.Presentation
             // 
             // ProductsPage
             // 
+            ProductsPage.Controls.Add(buttonAddProduct);
             ProductsPage.Controls.Add(flowLayoutPanel1);
             ProductsPage.Controls.Add(label4);
             ProductsPage.Location = new Point(4, 4);
@@ -347,21 +347,19 @@ namespace E_Commerce.Presentation
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Controls.Add(buttonAddProduct);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(3, 3);
+            flowLayoutPanel1.Location = new Point(3, 74);
             flowLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(695, 470);
+            flowLayoutPanel1.Size = new Size(695, 350);
             flowLayoutPanel1.TabIndex = 1;
             // 
             // buttonAddProduct
             // 
             buttonAddProduct.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddProduct.Location = new Point(3, 2);
+            buttonAddProduct.Location = new Point(18, 430);
             buttonAddProduct.Margin = new Padding(3, 2, 3, 2);
             buttonAddProduct.Name = "buttonAddProduct";
-            buttonAddProduct.Size = new Size(140, 0);
+            buttonAddProduct.Size = new Size(140, 44);
             buttonAddProduct.TabIndex = 2;
             buttonAddProduct.Text = "Add Product";
             buttonAddProduct.UseVisualStyleBackColor = true;
@@ -616,7 +614,6 @@ namespace E_Commerce.Presentation
             ((System.ComponentModel.ISupportInitialize)dataGridViewCategory).EndInit();
             ProductsPage.ResumeLayout(false);
             ProductsPage.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             OrdersPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgrViewOrders).EndInit();
             AddAdminPage.ResumeLayout(false);

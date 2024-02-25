@@ -554,25 +554,27 @@
             dgrvOrders.AllowUserToDeleteRows = false;
             dgrvOrders.AllowUserToResizeColumns = false;
             dgrvOrders.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.IndianRed;
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Black;
+            dataGridViewCellStyle1.BackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.ForestGreen;
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dgrvOrders.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgrvOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgrvOrders.BackgroundColor = Color.White;
             dgrvOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgrvOrders.Columns.AddRange(new DataGridViewColumn[] { Date, Total, State });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.IndianRed;
+            dataGridViewCellStyle2.BackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.ForestGreen;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgrvOrders.DefaultCellStyle = dataGridViewCellStyle2;
             dgrvOrders.Dock = DockStyle.Fill;
             dgrvOrders.Location = new Point(0, 0);
             dgrvOrders.Name = "dgrvOrders";
+            dgrvOrders.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.Black;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -590,18 +592,21 @@
             Date.DataPropertyName = "Date";
             Date.HeaderText = "OrderDate";
             Date.Name = "Date";
+            Date.ReadOnly = true;
             // 
             // Total
             // 
             Total.DataPropertyName = "FinalPrice";
             Total.HeaderText = "Total";
             Total.Name = "Total";
+            Total.ReadOnly = true;
             // 
             // State
             // 
             State.DataPropertyName = "State";
             State.HeaderText = "State";
             State.Name = "State";
+            State.ReadOnly = true;
             // 
             // Home
             // 
